@@ -6,10 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.repositories.UsersRepository;
-
-import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -36,8 +33,7 @@ public class UserServiceImp implements UserService {
     @Transactional(readOnly = true)
     public User findByName(String name) {
         try {
-            User user = usersRepository.findByUsername(name);
-            return user;
+            return usersRepository.findByUsername(name);
         } catch (RuntimeException e) {
             return null;
         }
